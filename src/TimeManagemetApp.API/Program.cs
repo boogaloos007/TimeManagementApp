@@ -16,8 +16,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Register UserService for DI
+// Register services for DI
 builder.Services.AddScoped<TimeManagemetApp.BusinessLogic.Services.UserService>();
+builder.Services.AddScoped<TimeManagemetApp.BusinessLogic.Services.CategoryService>();
+builder.Services.AddScoped<TimeManagemetApp.BusinessLogic.Services.CalendarEventService>();
 
 // JWT Authentication configuration
 var jwtKey = builder.Configuration["Jwt:Key"] ?? "your_secret_key_here";
